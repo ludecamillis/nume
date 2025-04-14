@@ -1,0 +1,17 @@
+from fastapi import FastAPI, Query
+from escala import buscar_plantao_por_atendente, buscar_plantao_por_unidade
+from typing import Optional
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "API do Robô de Plantão funcionando"}
+
+@app.get("/plantao/atendente")
+def plantao_atendente(nome: str, data: Optional[str] = None):
+    return buscar_plantao_por_atendente(nome, data)
+
+@app.get("/plantao/unidade")
+def plantao_unidade(unidade: str, data: Optional[str] = None):
+    return buscar_plantao_por_unidade(unidade, data)
