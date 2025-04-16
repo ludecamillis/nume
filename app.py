@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
-from escala import buscar_plantao_por_atendente, buscar_plantao_por_unidade
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
+from escala import buscar_plantao_por_atendente, buscar_plantao_por_unidade
 
 app = FastAPI()
 app.add_middleware(
